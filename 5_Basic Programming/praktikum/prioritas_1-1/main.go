@@ -6,11 +6,8 @@ package main
 import "fmt"
 
 func main() {
-	var (
-		sisiAtas float32
-		sisiBawah float32
-		tinggi float32
-	)
+	var sisiAtas, sisiBawah, tinggi float32
+	
 	fmt.Print("Sisi atas: ")
 	fmt.Scan(&sisiAtas)
 	fmt.Print("Sisi bawah: ")
