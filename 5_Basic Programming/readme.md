@@ -49,9 +49,9 @@ Operator aritmatika melakukan operasi penjumlahan, pengurangan, perkalian, pemba
 Operator perbandingan digunakan dalam pernyataan logis untuk menentukan kesetaraan atau perbedaan antara variabel atau nilai. Beberapa operator perbandingan:
 - == -> sama dengan
 - != -> tidak sama dengan
-- > -> lebih dari
+- \> -> lebih dari
 - < -> kurang dari
-- >= -> lebih dari atau sama dengan
+- \>= -> lebih dari atau sama dengan
 - <= -> kurang dari atau sama dengan
 
 ### Logical
@@ -67,7 +67,7 @@ Operator bitwise adalah karakter yang mewakili tindakan (operasi bitwise) yang a
 - ^ -> bitwise XOR
 - ~ -> bitwise tidak
 - << -> geser ke kiri
-- >> -> geser ke kanan
+- \>> -> geser ke kanan
 
 ### Assignment
 Operator penugasan memberikan nilai operan kanannya ke variabel, properti, atau elemen pengindeks yang diberikan oleh operan kirinya. Beberapa operator penugasan:
@@ -82,7 +82,7 @@ Operator penugasan memberikan nilai operan kanannya ke variabel, properti, atau 
 ### Miscellanous
 Beberapa operator lain/lainnya:
 - & -> Alamat
-- * -> pointer ke variabel
+- \* -> pointer ke variabel
 
 
 ## Control Structures
