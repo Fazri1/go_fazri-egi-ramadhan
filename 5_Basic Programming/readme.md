@@ -37,10 +37,10 @@ sedangkan untuk deklarasi konstanta menggunakan awalan const, contoh:
 ## Operator
 ### Arithmetic
 Operator aritmatika melakukan operasi penjumlahan, pengurangan, perkalian, pembagian, eksponensial, dan modulus. Beberapa operator aritmatika:
-- + -> Penjumlahan
-- - -> Pengurangan
+- \+ -> Penjumlahan
+- \- -> Pengurangan
 - / -> Pembagian
-- * -> Perkalian
+- \* -> Perkalian
 - % -> Sisa bagi
 - ++ -> Increment
 - -- -> Decrement
