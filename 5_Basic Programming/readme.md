@@ -28,6 +28,7 @@ Variabel digunakan untuk menyimpan informasi dalam program komputer, mereka meny
 - Boolean memiliki nilai true dan false
 - Numerik dibagi menjadi 3 yaitu integer (bilangan bulat), float (bilangan desimal), complex.
 - String merupakan setiap karakter yang diapit “”.
+
 Untuk deklarasi variabel ketik var diikuti dengan nama variabel dan tipe datanya, contoh:
 ```var nama string```
 sedangkan untuk deklarasi konstanta menggunakan awalan const, contoh:
