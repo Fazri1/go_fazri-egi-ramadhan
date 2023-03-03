@@ -23,32 +23,27 @@ func (student Student) averageScore() int {
 	return totalScore / len(student.score)
 }
 
-func (student Student) minScore() (string,int) {
+func (student Student) getScore() (string, string, int, int) {
 	minScore := student.score[0]
+	maxScore := student.score[0]
 	minScoreName := student.name[0]
+	maxScoreName := student.name[0]
+	
 	for i := range student.score {
 		currentScore := student.score[i]
 
 		if minScore > currentScore {
 			minScore = currentScore
 			minScoreName = student.name[i]
-		}
-	}
-	return minScoreName, minScore
-}
-
-func (student Student) maxScore() (string,int) {
-	maxScore := student.score[0]
-	maxScoreName := student.name[0]
-	for i := range student.score {
-		currentScore := student.score[i]
+		} 
 
 		if maxScore < currentScore {
 			maxScore = currentScore
 			maxScoreName = student.name[i]
 		}
 	}
-	return maxScoreName, maxScore
+	
+	return maxScoreName, minScoreName, maxScore, minScore
 }
 
 func main() {
@@ -75,8 +70,7 @@ func main() {
 	}
 	
 	avgScore := students.averageScore()
-	minimalScoreName, minimalScore := students.minScore()
-	maximalScoreName, maximalScore := students.maxScore()
+	maximalScoreName, minimalScoreName, maximalScore, minimalScore := students.getScore()
 
 	fmt.Println()
 	fmt.Println("Average Score:", avgScore)
