@@ -2,22 +2,57 @@ package main
 
 import "fmt" 
 
-func MaximumBuyProduct(money int, productPrice []int) {
-	// your code here
+func mergeArr(left, right[]int) []int{
+	var i, j int
+	result := []int{}
 
-	for i := 0; i < len(productPrice); i++ {
-		for j := i + 1; j < len(productPrice); j++ {
-			if productPrice[i] > productPrice[j] {
-				productPrice[i], productPrice[j] = productPrice[j], productPrice[i]
-			}
+	for i < len(left) && j < len(right) {
+		if left[i] < right[j] {
+			result = append(result, left[i])
+			i++
+		} else {
+			result = append(result, right[j])
+			j++
 		}
 	}
+
+	for i < len(left) {
+		result = append(result, left[i])
+		i++
+	}
+
+	for j < len(right) {
+		result = append(result, right[j])
+		j++
+	}
+	return result
+}
+
+func mergeSort(arr []int) []int{
+	if len(arr) < 2 {
+		return arr
+	}
+	var mid int
+	if len(arr) % 2 == 0 {
+		mid = len(arr) / 2
+	} else {
+		mid = (len(arr) + 1) / 2
+	}
+	mergeLeft := mergeSort(arr[:mid])
+	mergeRight := mergeSort(arr[mid:])
+	return mergeArr(mergeLeft, mergeRight)
 	
+}
+
+func MaximumBuyProduct(money int, productPrice []int) {
+	// your code here
+	sortedProduct := mergeSort(productPrice)
 	productBuy := 0
-	for i := range productPrice {
-		if money >= productPrice[i] {
+
+	for i := range sortedProduct {
+		if money >= sortedProduct[i] {
 			productBuy += 1
-			money -= productPrice[i]
+			money -= sortedProduct[i]
 		} else {
 			break
 		}
