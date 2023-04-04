@@ -10,7 +10,7 @@ type Blog struct {
 	User User `gorm:"foreignKey:IDUser"`
 }
 
-type BlogWithoutJoin struct {
+type BlogResponse struct {
 	IDUser uint 	`json:"iduser" form:"iduser"`
 	Title string	`json:"title" form:"title"`
 	Content string	`json:"content" form:"content"`

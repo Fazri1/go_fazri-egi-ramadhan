@@ -37,12 +37,19 @@ func GetBlogController(c echo.Context) error {
 
 func CreateBlogController(c echo.Context) error {
 	var blog models.Blog
-	var createdBlog models.BlogWithoutJoin
+	var createdBlog models.BlogResponse
 	c.Bind(&createdBlog)
 
+	_, err := database.GetUserById(createdBlog.IDUser)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, map[string]interface{}{
+			"message": "user doesn't exist!",
+		})
+	}
 	blog.IDUser = createdBlog.IDUser
 	blog.Title = createdBlog.Title
 	blog.Content = createdBlog.Content
+	
 	if err := config.DB.Save(&blog).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
@@ -74,11 +81,18 @@ func DeleteBlogController(c echo.Context) error {
 
 func UpdateBlogController(c echo.Context) error {
 	var blog models.Blog
-	updatedBlog := models.BlogWithoutJoin{}
+	updatedBlog := models.BlogResponse{}
 	c.Bind(&updatedBlog)
 
 	if err := config.DB.Find(&blog, c.Param("id")).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+	}
+
+	_, err := database.GetUserById(updatedBlog.IDUser)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, map[string]interface{}{
+			"message": "user doesn't exist!",
+		})
 	}
 	
 	blog.IDUser = updatedBlog.IDUser
@@ -92,6 +106,4 @@ func UpdateBlogController(c echo.Context) error {
 		"message": "success update blog by id: " + c.Param("id"),
 		"blog": updatedBlog,
 	})
-
-
 }
