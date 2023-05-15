@@ -5,8 +5,7 @@ Sebuah toko barang elektronik ingin merancang sebuah aplikasi yang dapat digunak
 ### Endpoint
 | URI | Method | Description |
 | --- | :---: | --- |
-| /items | GET | Mendapatkan semua data
-barang |
+| /items | GET | Mendapatkan semua data barang |
 | /items/:id | GET | Mendapatkan data barang berdasarkan ID |
 | /items | POST | Menambahkan data barang |
 | /items/:id | PUT | Mengubah data barang |
