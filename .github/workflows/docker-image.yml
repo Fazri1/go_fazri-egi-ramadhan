@@ -26,5 +26,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          dockerfile: 28_CI CD/praktikum/Dockerfile
           push: true
           tags: fazri1/go-apotek:latest
