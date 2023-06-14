@@ -1,0 +1,51 @@
+version: '3'
+services:
+  app:
+    container_name: api-go
+    build: .
+    ports: 
+      - 8080:8080 
+    restart: on-failure
+    depends_on:
+      - db       
+    networks:
+      - example
+
+
+  db:
+    image: mysql:latest
+    container_name: db-go
+    ports: 
+      - 3306:3306
+    environment: 
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+
+    volumes:
+      - database_mysql:/var/lib/mysql
+    networks:
+      - example
+  
+  # phpmyadmin:
+  #   image: phpmyadmin/phpmyadmin
+  #   container_name: phpmyadmin_container
+  #   depends_on:
+  #     - fullstack-mysql
+  #   environment:
+  #     - PMA_HOST=fullstack-mysql # Note the "fullstack-mysql". Must be the name of the what you used as the mysql service.
+  #     - PMA_USER=${DB_USER}
+  #     - PMA_PORT=${DB_PORT}
+  #     - PMA_PASSWORD=${DB_PASSWORD}
+  #   ports:
+  #     - 9090:80
+  #   restart: always
+  #   networks:
+  #     - fullstack
+
+
+volumes:
+  database_mysql:                  
+
+# Networks to be created to facilitate communication between containers
+networks:
+  example:
+    driver: bridge
