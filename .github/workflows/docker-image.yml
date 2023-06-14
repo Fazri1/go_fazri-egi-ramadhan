@@ -36,13 +36,13 @@ jobs:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
     
     - name: Modify Dockerfile
-      run: sed -i 's/FROM node:12/FROM node:16/' 28_CI CD/praktikum/Dockerfile
+      run: sed -i 's/FROM node:12/FROM node:16/' 28_CI\ CD/praktikum/Dockerfile
 
     - name: Build and push Docker image
       uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
       with:
         context: .
         push: true
-        dockerfile: 28_CI CD/praktikum/Dockerfile
+        dockerfile: 28_CI\ CD/praktikum/Dockerfile
         tags: fazri1/go-api:latest
         labels: fazri1/go-api:latest
